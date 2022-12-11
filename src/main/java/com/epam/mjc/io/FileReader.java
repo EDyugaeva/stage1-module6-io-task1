@@ -18,19 +18,22 @@ public class FileReader {
                 line = bufferedReader.readLine();
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new MyRuntimeException("file not found exception");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        return parseList(list);
+    }
+
+    private Profile parseList(List<String> list) {
         String name = list.get(0).substring(6);
         int age = Integer.parseInt(list.get(1).substring(5));
         String email = list.get(2).substring(7);
         long phone = Long.parseLong(list.get(3).substring(7));
 
-        Profile profile = new Profile(name, age, email, phone);
+        return new Profile(name, age, email, phone);
 
-        System.out.println(profile.toString());
-        return profile;
     }
 
 
