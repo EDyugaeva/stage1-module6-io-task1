@@ -20,7 +20,7 @@ public class FileReader {
         } catch (FileNotFoundException e) {
             throw new MyRuntimeException("file not found exception");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new MyRuntimeException("Other IO exception");
         }
 
         return parseList(list);
